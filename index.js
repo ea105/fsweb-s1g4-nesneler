@@ -15,9 +15,17 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 */
 
 
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
-}
+function MenuElemaniOlustur(name, price, category) {
+	const item = {
+	  isim: name,
+	  fiyat: price,
+	  kategori: category,
+	};
+  
+	
+	return item;
+  }
+  console.log("G1a", MenuElemaniOlustur("Cheeseburger", 8, "Burgerler"));  
 
 
 
@@ -30,7 +38,12 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
+console.log("G1b1", MenuElemaniOlustur("Karışık Pizza", 5, "Pizzalar"));
+console.log("G1b2", MenuElemaniOlustur("Kahvaltı Tabağı", 10, "Kahvaltı"));
+console.log("G1b3", MenuElemaniOlustur("Kola", 3, "İçecekler"));
 
+const kahvaltiTabagi = MenuElemaniOlustur("Kahvaltı Tabağı", 10, "Kahvaltı");
+console.log("G1b4", kahvaltiTabagi.fiyat);
 
 
 /* Görev 2: 
@@ -50,10 +63,30 @@ const burger = {
 	isim: "Burger", 
 	fiyat: 18, 
 	kategori: "Öğle Yemeği", 
+	indirim: function (kisi) {
+		
+		const ogretmen = "öğretmen";
+		const ogrenci = "öğrenci";
+		const diger = "diğer";
+	
+		let indirimliFiyat = this.fiyat;
+	
+		if (kisi == ogrenci) {
+		  indirimliFiyat = this.fiyat * 0.75;
+		} else if (kisi == ogretmen) {
+		  indirimliFiyat = this.fiyat * 0.75;
+		} else {
+		  indirimliFiyat = this.fiyat * 0.9;
+		}
+		
+		return indirimliFiyat;
+	  },
+	};
+	
 
-}
-
-
+console.log("G2 0", burger.fiyat);
+	console.log("G2 1", burger.indirim("öğretmen"));
+	console.log("G2 2", burger.indirim("diğer"));
 
 ///////////////Değerlendirmeler (MVP)///////////////////
 const degerlendirmeler = [
@@ -94,10 +127,29 @@ const degerlendirmeler = [
 */
 
 
-function DegerlendirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
-	
-}
+function DegerlendirmeEkle(
+	degerlendirmeler,
+	isimgir,
+	puangir,
+	geribildirimgir
+  ) {
+	degerlendirmeler.push({
+	  isim: isimgir,
+	  puan: puangir,
+	  geribildirim: geribildirimgir,
+	});
+	return degerlendirmeler;
+  }
+  
+  console.log("G5");
+  console.log(
+	DegerlendirmeEkle(degerlendirmeler, "Hurşut", 2, "Boktan yemekler!")
+  );
+  
+  console.log(
+	"G5",
+	DegerlendirmeEkle(degerlendirmeler, "Hurşut", 2, "B*ktan yemekler!")
+  );
 
 
 
@@ -112,11 +164,17 @@ function DegerlendirmeEkle(/*Kodlar buraya */){
 */
 
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
-
-}
-
+function AnahtardanDegerlendirmeAl(arr, index) {
+	const str = `${arr[index].isim} isimli kişi ${arr[index].puan} puan verdi ve şunları yazdı: ${arr[index].geribildirim}`;
+	const str2 =
+	  arr[index].isim +
+	  " isimli kişi " +
+	  arr[index].puan +
+	  " puan verdi ve şunları yazdı: " +
+	  arr[index].geribildirim;
+	return str;
+  }
+  console.log(AnahtardanDegerlendirmeAl(degerlendirmeler, 0));
 
 
 /*  Görev 7:  
@@ -132,10 +190,12 @@ function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
 */
 
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
-} 
-
+function SonDegerlendirmeyiAl(dizi) {
+	const sonEleman = dizi[dizi.length - 1];
+	const { isim, puan, geribildirim } = sonEleman; 
+	return `${isim} isimli kişi ${puan} puan verdi ve şunları yazdı: ${geribildirim}`;
+  }
+  
 
 
 /////////////// BONUS  GÖRVLER////////////////////
